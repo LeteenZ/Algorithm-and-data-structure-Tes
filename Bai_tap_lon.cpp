@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 typedef struct node
@@ -34,7 +35,7 @@ void Bubble(NodePtr pHead);						//2.
 void Insertion(NodePtr pHead);					//3.
 void Quick(NodePtr pHead);						//4.
 void Heap(NodePtr pHead);						//5.
-
+//2 cai cuoi chua xong
 
 
 /*
@@ -45,9 +46,12 @@ void Heap(NodePtr pHead);						//5.
 void Enter_List(NodePtr pHead)
 {
 	int n, value;
+	//tao so phan tu cua danh sach
 	cout<<"Enter the number of list : ";
 	cin>>n;
-	NODE* temp = pHead;
+	cout<<endl;
+	NODE* temp = pHead;		//dung lam prev cua node moi
+	//nhap danh sach
 	for(int i = 0; i < n ; i++)
 	{
 		cout<<"Enter value ["<<i<<"] : ";
@@ -57,6 +61,7 @@ void Enter_List(NodePtr pHead)
 		pHead = pHead->next;
 		pHead->prev = temp;
 		temp = pHead;
+		cout<<endl;
 	}  
 }
  
@@ -68,17 +73,21 @@ void Show(NodePtr pHead)
 		cout<<"List's empty";
 		return;
 	}
-	cout<<"\nList : \n";
+	cout<<"\nList : \n\n";
+	//in danh sach
 	Show_List(pHead);
 	cout<<"\n";
-	cout<<"\nReverse : \n";
+	//in danh sach nguoc
+	cout<<"\nReverse : \n\n";
 	Show_Reverse(pHead);
+	cout<<endl;
 }
 
 
 //3.Count the number of nodes of the list
 int Count_Node(NodePtr pHead)
 {
+	//tao roi dem node
 	int count=0;
 	while(pHead->info != '\0')
 	{
@@ -94,12 +103,14 @@ void Add(NodePtr pHead)
 	int x;
 	cout<<"\nEnter the 'x' : ";
 	cin>>x;
+	//chen vao cuoi
 	Add_Node(pHead, x);
 }
 
 //5.Remove the node at the end of the list
 void Remove(NodePtr pHead)
 {
+	//kiem tra ds co rong ko
 	if(Check_Empty(pHead) == 0)
 	{
 		cout<<"List's empty";
@@ -113,17 +124,19 @@ void Remove(NodePtr pHead)
 	}
 	pHead = temp;
 	pHead->info = '\0';
-	cout<<"\nRemove complete.....";
+	cout<<"\nRemove complete.....\n";
 }
 
 //6.Sort the list in descending order of the info
 void Soft(NodePtr pHead)
 {
+	//kiem tra ds co rong ko
 	if(Check_Empty(pHead) == 0)
 	{
 		cout<<"List's empty";
 		return;
 	}
+	//menu de chon cach thuc sap  xep
 	int n;
 	cout<<"\n\t\t\tAlgorithm:";
 	cout<<"\n\t\t\t1.Selection soft";
@@ -156,7 +169,6 @@ void Soft(NodePtr pHead)
 			Quick(pHead);
 			break;
 			*/
-			goto da;
 		}	
 		case 5:
 		{
@@ -164,7 +176,6 @@ void Soft(NodePtr pHead)
 			Heap(pHead);
 			break;
 			*/
-			goto da;
 		}	
 		default:
 		{
@@ -177,6 +188,7 @@ void Soft(NodePtr pHead)
 //7.The End
 void End()
 {
+	//mang hinh thuc giai tri nhe :3
 	int n;
 	cout<<"\n\t\t\t1.Yes";
 	cout<<"\n\t\t\t2.NO";
@@ -212,14 +224,25 @@ void menu()
 	int x;
 	Init(pHead);
 	menu:
-	cout<<"\n\t\t\t\t\t-MENU-";
-	cout<<"\n\t\t\t1.Enter a list";
-	cout<<"\n\t\t\t2.Show full list";
-	cout<<"\n\t\t\t3.Count the number of nodes of the list";
-	cout<<"\n\t\t\t4.Add a new node with information 'x' at the end of the list";
-	cout<<"\n\t\t\t5.Remove the node at the end of the list";
-	cout<<"\n\t\t\t6.Sort the list in descending order of the info";
-	cout<<"\n\t\t\t7.The End";
+	cout<<"\n\t\t\t __________________________________________________________________";
+	cout<<"\n\t\t\t/_________________________________________________________________/|";
+	cout<<"\n\t\t\t|                            -MENU-                               ||";
+	cout<<"\n\t\t\t|-----------------------------------------------------------------||";
+	cout<<"\n\t\t\t|                                                                 ||";
+	cout<<"\n\t\t\t|1.Enter a list                                                   ||";
+	cout<<"\n\t\t\t|                                                                 ||";
+	cout<<"\n\t\t\t|2.Show full list                                                 ||";
+	cout<<"\n\t\t\t|                                                                 ||";
+	cout<<"\n\t\t\t|3.Count the number of nodes of the list                          ||";
+	cout<<"\n\t\t\t|                                                                 ||";
+	cout<<"\n\t\t\t|4.Add a new node with information 'x' at the end of the list     ||";
+	cout<<"\n\t\t\t|                                                                 ||";
+	cout<<"\n\t\t\t|5.Remove the node at the end of the list                         ||";
+	cout<<"\n\t\t\t|                                                                 ||";
+	cout<<"\n\t\t\t|6.Sort the list in descending order of the info                  ||";
+	cout<<"\n\t\t\t|                                                                 ||";
+	cout<<"\n\t\t\t|7.The End                                                        ||";
+	cout<<"\n\t\t\t|_________________________________________________________________|/";
 	dio:
 	cout<<"\n\t\t\t< Type '0'-zero if u want to see menu again >";
 	cout<<"\n\n\t\t\tChoose your function: ";
@@ -240,7 +263,7 @@ void menu()
 		}	
 		case 3:
 		{
-			cout<<"\nThe number of nodes of the list is: "<<Count_Node(pHead);
+			cout<<"\nThe number of nodes of the list is: "<<Count_Node(pHead)<<endl;
 			goto dio;
 		}	
 		case 4:
@@ -290,6 +313,7 @@ int main()
 //1.
 void Init(NodePtr pHead)
 {
+	//bien pHead thanh null
 	pHead->prev = Create_Node({NULL});
 	pHead->info = '\0';
 }	
@@ -297,6 +321,7 @@ void Init(NodePtr pHead)
 //2.
 int Check_Empty(NodePtr pHead)
 {
+	//kiem tra xem danh sach co rong ko
 	if(pHead->info == '\0')
 		return 0;
 	else
@@ -306,12 +331,14 @@ int Check_Empty(NodePtr pHead)
 //3.		
 void Show_Node(NodePtr p)
 {
+	//in ra truong info
 	cout<<p->info<<"\t";
 }
 
 //4.				
 NodePtr Create_Node(int value)
 {
+	//tao node moi va bien thanh null
 	NodePtr New_Node = new NODE;
 	New_Node->info = value;
 	New_Node->next = NULL;
@@ -352,6 +379,7 @@ void  Add_Node(NodePtr pHead, int value)
 //6.
 void End_Again()
 {
+	//mot chua giai tri
 	int n;
 	cout<<"\n\t\t\tDo u want to see some stuff ?";
 	cout<<"\n\t\t\t1.Yes";
@@ -396,6 +424,7 @@ void End_Again()
 //7.
 void Show_List(NodePtr pHead)
 {
+	//in danh sach
 	while(pHead->info != '\0')
 	{
 		Show_Node(pHead);
@@ -406,6 +435,7 @@ void Show_List(NodePtr pHead)
 //8.
 void Show_Reverse(NodePtr pHead)
 {
+	//in danh sach nguoc
 	while(pHead->info != '\0')
 	{
 		pHead = pHead->next;
@@ -421,6 +451,7 @@ void Show_Reverse(NodePtr pHead)
 //9.
 void Swap(NodePtr p, NodePtr q)
 {
+	//doi cho 2 truong info 
 	int tg;
 	tg = p->info;
 	p->info = q->info;
@@ -429,6 +460,8 @@ void Swap(NodePtr p, NodePtr q)
 /*
 		Soft item
 */
+
+//ap dung cong thuc la ra : la khong dung voi may giai thuat nay ="))))
 
 //1.
 void Selection(NodePtr pHead)
@@ -521,11 +554,11 @@ void Insertion(NodePtr pHead)
 //4.
 void Quick(NodePtr pHead)
 {
-	
+	//ko du thoi gian lam do phai di dem nhac chao tan sv :))
 }
 
 //5.
 void Heap(NodePtr pHead)
 {
-	
+	//ko du thoi gian lam do phai di dem nhac chao tan sv :))
 }
